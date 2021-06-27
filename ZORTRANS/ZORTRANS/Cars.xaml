@@ -1,0 +1,156 @@
+﻿<Window x:Class="ZORTRANS.Cars"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZORTRANS"
+        mc:Ignorable="d"
+       
+        WindowState="Maximized"
+        ResizeMode="NoResize"
+        ShowInTaskbar="True"
+      
+   
+        Title="ZORTRANS SRL" Height="800" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+
+        <CollectionViewSource x:Key="masiniViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Masini}, CreateList=True}"/>
+
+    </Window.Resources>
+    <Grid DataContext="{StaticResource masiniViewSource}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="col1" Width="74*"/>
+            <ColumnDefinition Width="719*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Border CornerRadius="10" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="0,0,-0.4,0">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FF2723CD" Offset="0.0">
+                    </GradientStop>
+                    <GradientStop Color="#FF832E2E" Offset="1">
+                    </GradientStop>
+
+                </LinearGradientBrush>
+
+            </Border.Background>
+            <Separator HorizontalAlignment="Left" Height="30" Margin="-96,424,0,0" VerticalAlignment="Top" Width="600" RenderTransformOrigin="0.523,0.496">
+                <Separator.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Separator.RenderTransform>
+            </Separator>
+        </Border>
+
+
+        <StackPanel VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="10,20,0,0">
+            <Image Style="{x:Null}" Source="Images/zts.png" Width="270" Margin="20"/>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom" Margin="10,-250,-150,-300" Grid.ColumnSpan="2">
+            <Border
+            x:Name="border"
+            Margin="08,02,0,0"
+            Padding="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            BorderThickness="0,.7,0,0">
+                <Border.BorderBrush>
+                    <SolidColorBrush Opacity="0.3" Color="Black" />
+                </Border.BorderBrush>
+                <Viewbox
+                Width="257"
+                MinHeight="20"
+                MaxHeight="38"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Stretch="Fill">
+                    <TextBlock
+                    x:Name="slognBlock"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontFamily="LucidaSans"
+                    Text="We deliver your cargo, whenever you need it and wherever you need it."
+                    TextAlignment="Center" FontSize="48" FontStyle="Italic" 
+                      />
+
+                </Viewbox>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Grid.RowSpan="1" Width="200" Height="350">
+            <StackPanel>
+
+                <Image x:Name="Transports" Source="Images/Trans.png" Width="150" Height="150" HorizontalAlignment="Left" Margin="20,60,0,0" AutomationProperties.Name="Transports" MouseLeftButtonDown="Transports_MouseLeftButtonDown" />
+
+                <Image x:Name="DriversPhoto" Source="Images/driver.png" Width="150" Height="140" HorizontalAlignment="Left" Margin="20,10,0,0" AutomationProperties.Name="Drivers" MouseLeftButtonDown="Drivers_MouseLeftButtonDown"/>
+
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Grid.RowSpan="2" Width="200" Height="350">
+            <StackPanel>
+                <Image Opacity="0.45" Focusable="True" x:Name="CarsImg" Source="Images/car.png" Width="180" Height="150" HorizontalAlignment="Left" Margin="20,0,0,0" AutomationProperties.Name="CarsImg" MouseLeftButtonDown="Cars_MouseLeftButtonDown"/>
+
+                <Image x:Name="Parteners" Source="Images/handsh.png" Width="180" Height="180" HorizontalAlignment="Left" Margin="20,10,0,0" AutomationProperties.Name="Parteners" MouseLeftButtonDown="Parteners_MouseLeftButtonDown"/>
+            </StackPanel>
+        </StackPanel>
+        <Grid x:Name="grid1" Grid.Column="1" HorizontalAlignment="Left" Margin="665.6,177,-179.4,0" VerticalAlignment="Top" Grid.RowSpan="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Adresa Destinatie:" Grid.Column="0" HorizontalAlignment="Left" Margin="-13,6,0,0" Grid.Row="0" VerticalAlignment="Center" FontWeight="Bold"/>
+            <TextBox x:Name="adresa_DestinatieTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Transporturi.Adresa_Destinatie, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Adresa Plecare:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center" FontWeight="Bold"/>
+            <TextBox x:Name="adresa_PlecareTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding Transporturi.Adresa_Plecare, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Data:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center" FontWeight="Bold"/>
+            <DatePicker x:Name="dataDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="2" SelectedDate="{Binding Transporturi.Data, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+            <Label Content="Distanta km:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center" FontWeight="Bold"/>
+            <TextBox x:Name="distanta_km_TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding Transporturi.Distanta_km_, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Greutate Marfa t:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center" FontWeight="Bold"/>
+            <TextBox x:Name="greutate_Marfa_t_TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="4" Text="{Binding Transporturi.Greutate_Marfa_t_, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="ID LOCATIE:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center" FontWeight="Bold"/>
+            <TextBox x:Name="iD_LOCATIETextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding Transporturi.ID_LOCATIE, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="ID TRANSPORT:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center" FontWeight="Bold"/>
+            <TextBox x:Name="iD_TRANSPORTTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding Transporturi.ID_TRANSPORT, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Marfa:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="7" VerticalAlignment="Center" FontWeight="Bold"/>
+            <TextBox x:Name="marfaTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="7" Text="{Binding Transporturi.Marfa, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Pret km:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="8" VerticalAlignment="Center" FontWeight="Bold"/>
+            <TextBox x:Name="pret_kmTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="8" Text="{Binding Transporturi.Pret_km, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+        </Grid>
+        <ListView x:Name="masiniListView" HorizontalAlignment="Left" MaxWidth="420" Grid.Column="1" ItemsSource="{Binding Source={StaticResource masiniViewSource}}" Margin="171.6,189,0,372.4" SelectedValuePath="ID_MASINA" SelectionMode="Single" Width="445" Grid.RowSpan="2" AutomationProperties.IsColumnHeader="True">
+            <ListBox.ItemTemplate >
+                <DataTemplate>
+                    <StackPanel TextBlock.FontFamily="Mangal">
+                        <TextBlock Text=" * * * * * * * * *" />
+                        <TextBlock Text="{Binding Marca, StringFormat={}1.Marca:  {0}}" />
+                        <TextBlock Text="{Binding Model, StringFormat={}2.Model:  {0}}" />
+                        <TextBlock Text="{Binding Numar_Inmatriculare, StringFormat={}3.Numar:  {0}}" />
+                        <TextBlock Text="{Binding Tip, StringFormat={}4.Categorie:  {0}}" />
+                        <TextBlock Text="{}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListView>
+        <Button Name="b_addCar" Content="Adaugare masina" Width="100" Height="50" Margin="300.6,97.8,318.6,237.4" Grid.Column="1" Grid.Row="1" Background="#FF8C2323" Click="B_addCar_Click"/>
+    </Grid>
+
+</Window>

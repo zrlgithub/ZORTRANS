@@ -1,0 +1,21 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        xmlns:local="clr-namespace:ZORTRANS"
+        xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer" x:Class="ZORTRANS.Window2"
+        mc:Ignorable="d"
+        Title="RLDC raport" Height="1170.303" Width="1663.758">
+
+    <Grid RenderTransformOrigin="0.704,0.552" Margin="0,0,33,26">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1497*"/>
+        </Grid.ColumnDefinitions>
+        <WindowsFormsHost HorizontalAlignment="Left" Height="1093" Margin="8,10,0,0" VerticalAlignment="Top" Name="Idk" Width="1603" Grid.Column="1">
+            <rv:ReportViewer x:Name="_reportViewer"/>
+        </WindowsFormsHost>
+    </Grid>
+</Window>

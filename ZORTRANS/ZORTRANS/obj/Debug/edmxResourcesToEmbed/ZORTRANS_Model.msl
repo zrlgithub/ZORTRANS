@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ZorTranSModelStoreContainer" CdmEntityContainer="ZorTranSEntities">
+    <EntitySetMapping Name="Angajatis">
+      <EntityTypeMapping TypeName="ZorTranSModel.Angajati">
+        <MappingFragment StoreEntitySet="Angajati">
+          <ScalarProperty Name="ID_Angajat" ColumnName="ID_Angajat" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="Data_Nastere" ColumnName="Data_Nastere" />
+          <ScalarProperty Name="CNP" ColumnName="CNP" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Salariu" ColumnName="Salariu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientis">
+      <EntityTypeMapping TypeName="ZorTranSModel.Clienti">
+        <MappingFragment StoreEntitySet="Clienti">
+          <ScalarProperty Name="ID_CLIENT" ColumnName="ID_CLIENT" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locatiis">
+      <EntityTypeMapping TypeName="ZorTranSModel.Locatii">
+        <MappingFragment StoreEntitySet="Locatii">
+          <ScalarProperty Name="ID_LOCATIE" ColumnName="ID_LOCATIE" />
+          <ScalarProperty Name="Oras" ColumnName="Oras" />
+          <ScalarProperty Name="Strada" ColumnName="Strada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Masinis">
+      <EntityTypeMapping TypeName="ZorTranSModel.Masini">
+        <MappingFragment StoreEntitySet="Masini">
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Tip" ColumnName="Tip" />
+          <ScalarProperty Name="ID_MASINA" ColumnName="ID_MASINA" />
+          <ScalarProperty Name="Numar_Inmatriculare" ColumnName="Numar_Inmatriculare" />
+          <ScalarProperty Name="ID_TRANSPORT" ColumnName="ID_TRANSPORT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transporturis">
+      <EntityTypeMapping TypeName="ZorTranSModel.Transporturi">
+        <MappingFragment StoreEntitySet="Transporturi">
+          <ScalarProperty Name="ID_TRANSPORT" ColumnName="ID_TRANSPORT" />
+          <ScalarProperty Name="Adresa_Plecare" ColumnName="Adresa_Plecare" />
+          <ScalarProperty Name="Adresa_Destinatie" ColumnName="Adresa_Destinatie" />
+          <ScalarProperty Name="Distanta_km_" ColumnName="Distanta(km)" />
+          <ScalarProperty Name="Marfa" ColumnName="Marfa" />
+          <ScalarProperty Name="Greutate_Marfa_t_" ColumnName="Greutate_Marfa(t)" />
+          <ScalarProperty Name="Pret_km" ColumnName="Pret/km" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="ID_LOCATIE" ColumnName="ID_LOCATIE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persoane_Fizice">
+      <EntityTypeMapping TypeName="ZorTranSModel.Persoane_Fizice">
+        <MappingFragment StoreEntitySet="Persoane_Fizice">
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+          <ScalarProperty Name="ID_CLIENT" ColumnName="ID_CLIENT" />
+          <ScalarProperty Name="ID_LOCATIE" ColumnName="ID_LOCATIE" />
+          <ScalarProperty Name="CNP" ColumnName="CNP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persoane_Juridice">
+      <EntityTypeMapping TypeName="ZorTranSModel.Persoane_Juridice">
+        <MappingFragment StoreEntitySet="Persoane_Juridice">
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="CUI" ColumnName="CUI" />
+          <ScalarProperty Name="Nr_registru_comertului" ColumnName="Nr_registru_comertului" />
+          <ScalarProperty Name="ID_CLIENT" ColumnName="ID_CLIENT" />
+          <ScalarProperty Name="ID_LOCATIE" ColumnName="ID_LOCATIE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Soferis">
+      <EntityTypeMapping TypeName="ZorTranSModel.Soferi">
+        <MappingFragment StoreEntitySet="Soferi">
+          <ScalarProperty Name="Categorie_Permis" ColumnName="Categorie_Permis" />
+          <ScalarProperty Name="ID_SOFER_MASINA" ColumnName="ID_SOFER_MASINA" />
+          <ScalarProperty Name="ID_ANGAJAT" ColumnName="ID_ANGAJAT" />
+          <ScalarProperty Name="ID_DISPECER" ColumnName="ID_DISPECER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AfisareTransporturi" FunctionName="ZorTranSModel.Store.AfisareTransporturi">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZorTranSModel.AfisareTransporturi_Result">
+          <ScalarProperty Name="ID_TRANSPORT" ColumnName="ID_TRANSPORT" />
+          <ScalarProperty Name="Adresa_Plecare" ColumnName="Adresa_Plecare" />
+          <ScalarProperty Name="Adresa_Destinatie" ColumnName="Adresa_Destinatie" />
+          <ScalarProperty Name="Distanta_km_" ColumnName="Distanta(km)" />
+          <ScalarProperty Name="Marfa" ColumnName="Marfa" />
+          <ScalarProperty Name="Greutate_Marfa_t_" ColumnName="Greutate_Marfa(t)" />
+          <ScalarProperty Name="Pret_km" ColumnName="Pret/km" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="ID_LOCATIE" ColumnName="ID_LOCATIE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CautareFirma" FunctionName="ZorTranSModel.Store.CautareFirma" />
+    <FunctionImportMapping FunctionImportName="CautareLocatieFirma" FunctionName="ZorTranSModel.Store.CautareLocatieFirma" />
+    <FunctionImportMapping FunctionImportName="CautareSoferAuto" FunctionName="ZorTranSModel.Store.CautareSoferAuto">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZorTranSModel.CautareSoferAuto_Result">
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Numar_Inmatriculare" ColumnName="Numar_Inmatriculare" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsumTransport" FunctionName="ZorTranSModel.Store.ConsumTransport" />
+    <FunctionImportMapping FunctionImportName="EmailFirma" FunctionName="ZorTranSModel.Store.EmailFirma" />
+    <FunctionImportMapping FunctionImportName="InfoAngajati" FunctionName="ZorTranSModel.Store.InfoAngajati">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZorTranSModel.InfoAngajati_Result">
+          <ScalarProperty Name="ID_Angajat" ColumnName="ID_Angajat" />
+          <ScalarProperty Name="Nume" ColumnName="Nume" />
+          <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="Data_Nastere" ColumnName="Data_Nastere" />
+          <ScalarProperty Name="CNP" ColumnName="CNP" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Salariu" ColumnName="Salariu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="insert_masina" FunctionName="ZorTranSModel.Store.insert_masina" />
+    <FunctionImportMapping FunctionImportName="NrMasini" FunctionName="ZorTranSModel.Store.NrMasini">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZorTranSModel.NrMasini_Result">
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="NR_Masini" ColumnName="NR_Masini" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ZorTranSModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ZorTranSModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ZorTranSModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ZorTranSModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZorTranSModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ZorTranSModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZorTranSModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ZorTranSModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ZorTranSModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="TelefonAngajat" FunctionName="ZorTranSModel.Store.TelefonAngajat" />
+    <FunctionImportMapping FunctionImportName="TransportDupaData" FunctionName="ZorTranSModel.Store.TransportDupaData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ZorTranSModel.TransportDupaData_Result">
+          <ScalarProperty Name="Adresa_Plecare" ColumnName="Adresa_Plecare" />
+          <ScalarProperty Name="Marfa" ColumnName="Marfa" />
+          <ScalarProperty Name="Greutate_Marfa_t_" ColumnName="Greutate_Marfa(t)" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="Adresa_destinatie" ColumnName="Adresa_destinatie" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="VenitTotalFirma" FunctionName="ZorTranSModel.Store.VenitTotalFirma" />
+    <FunctionImportMapping FunctionImportName="insert_transport" FunctionName="ZorTranSModel.Store.insert_transport" />
+    <FunctionImportMapping FunctionImportName="insert_angajat" FunctionName="ZorTranSModel.Store.insert_angajat" />
+    <FunctionImportMapping FunctionImportName="insert_sofer" FunctionName="ZorTranSModel.Store.insert_sofer" />
+    <FunctionImportMapping FunctionImportName="insert_client" FunctionName="ZorTranSModel.Store.insert_client" />
+    <FunctionImportMapping FunctionImportName="insert_client_fizic" FunctionName="ZorTranSModel.Store.insert_client_fizic" />
+    <FunctionImportMapping FunctionImportName="insert_client_juridic" FunctionName="ZorTranSModel.Store.insert_client_juridic" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ZorTranSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Angajati">
+    <Key>
+      <PropertyRef Name="ID_Angajat" />
+    </Key>
+    <Property Name="ID_Angajat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nume" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prenume" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adresa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Data_Nastere" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CNP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Salariu" Type="Int32" />
+    <NavigationProperty Name="Soferis" Relationship="Self.FK__Soferi__ID_ANGAJ__49C3F6B7" FromRole="Angajati" ToRole="Soferi" />
+  </EntityType>
+  <EntityType Name="Clienti">
+    <Key>
+      <PropertyRef Name="ID_CLIENT" />
+    </Key>
+    <Property Name="ID_CLIENT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Adresa" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefon" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Persoane_Fizice" Relationship="Self.FK__Persoane___ID_CL__31EC6D26" FromRole="Clienti" ToRole="Persoane_Fizice" />
+    <NavigationProperty Name="Persoane_Juridice" Relationship="Self.FK__Persoane___ID_CL__32E0915F" FromRole="Clienti" ToRole="Persoane_Juridice" />
+  </EntityType>
+  <EntityType Name="Locatii">
+    <Key>
+      <PropertyRef Name="ID_LOCATIE" />
+    </Key>
+    <Property Name="ID_LOCATIE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Oras" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Strada" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Persoane_Fizice" Relationship="Self.FK__Persoane___ID_LO__33D4B598" FromRole="Locatii" ToRole="Persoane_Fizice" />
+    <NavigationProperty Name="Persoane_Juridice" Relationship="Self.FK__Persoane___ID_LO__34C8D9D1" FromRole="Locatii" ToRole="Persoane_Juridice" />
+    <NavigationProperty Name="Transporturis" Relationship="Self.FK__Transport__ID_LO__3B75D760" FromRole="Locatii" ToRole="Transporturi" />
+  </EntityType>
+  <EntityType Name="Masini">
+    <Key>
+      <PropertyRef Name="ID_MASINA" />
+    </Key>
+    <Property Name="Marca" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Tip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_MASINA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Numar_Inmatriculare" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ID_TRANSPORT" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Transporturi" Relationship="Self.FK__Masini__ID_TRANS__46E78A0C" FromRole="Masini" ToRole="Transporturi" />
+    <NavigationProperty Name="Soferis" Relationship="Self.FK__Soferi__ID_SOFER__4AB81AF0" FromRole="Masini" ToRole="Soferi" />
+  </EntityType>
+  <EntityType Name="Transporturi">
+    <Key>
+      <PropertyRef Name="ID_TRANSPORT" />
+    </Key>
+    <Property Name="ID_TRANSPORT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Adresa_Plecare" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adresa_Destinatie" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Distanta_km_" Type="Int32" Nullable="false" />
+    <Property Name="Marfa" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Greutate_Marfa_t_" Type="Double" Nullable="false" />
+    <Property Name="Pret_km" Type="Double" Nullable="false" />
+    <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ID_LOCATIE" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Locatii" Relationship="Self.FK__Transport__ID_LO__3B75D760" FromRole="Transporturi" ToRole="Locatii" />
+    <NavigationProperty Name="Masinis" Relationship="Self.FK__Masini__ID_TRANS__46E78A0C" FromRole="Transporturi" ToRole="Masini" />
+  </EntityType>
+  <EntityType Name="Persoane_Fizice">
+    <Key>
+      <PropertyRef Name="Nume" />
+      <PropertyRef Name="Prenume" />
+      <PropertyRef Name="ID_CLIENT" />
+      <PropertyRef Name="ID_LOCATIE" />
+      <PropertyRef Name="CNP" />
+    </Key>
+    <Property Name="Nume" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prenume" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_CLIENT" Type="Int32" Nullable="false" />
+    <Property Name="ID_LOCATIE" Type="Int32" Nullable="false" />
+    <Property Name="CNP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Clienti" Relationship="Self.FK__Persoane___ID_CL__31EC6D26" FromRole="Persoane_Fizice" ToRole="Clienti" />
+    <NavigationProperty Name="Locatii" Relationship="Self.FK__Persoane___ID_LO__33D4B598" FromRole="Persoane_Fizice" ToRole="Locatii" />
+  </EntityType>
+  <EntityType Name="Persoane_Juridice">
+    <Key>
+      <PropertyRef Name="Nume" />
+      <PropertyRef Name="CUI" />
+      <PropertyRef Name="Nr_registru_comertului" />
+      <PropertyRef Name="ID_CLIENT" />
+      <PropertyRef Name="ID_LOCATIE" />
+    </Key>
+    <Property Name="Nume" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CUI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nr_registru_comertului" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_CLIENT" Type="Int32" Nullable="false" />
+    <Property Name="ID_LOCATIE" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Clienti" Relationship="Self.FK__Persoane___ID_CL__32E0915F" FromRole="Persoane_Juridice" ToRole="Clienti" />
+    <NavigationProperty Name="Locatii" Relationship="Self.FK__Persoane___ID_LO__34C8D9D1" FromRole="Persoane_Juridice" ToRole="Locatii" />
+  </EntityType>
+  <EntityType Name="Soferi">
+    <Key>
+      <PropertyRef Name="ID_SOFER_MASINA" />
+      <PropertyRef Name="ID_ANGAJAT" />
+    </Key>
+    <Property Name="Categorie_Permis" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ID_SOFER_MASINA" Type="Int32" Nullable="false" />
+    <Property Name="ID_ANGAJAT" Type="Int32" Nullable="false" />
+    <Property Name="ID_DISPECER" Type="Int32" />
+    <NavigationProperty Name="Angajati" Relationship="Self.FK__Soferi__ID_ANGAJ__49C3F6B7" FromRole="Soferi" ToRole="Angajati" />
+    <NavigationProperty Name="Masini" Relationship="Self.FK__Soferi__ID_SOFER__4AB81AF0" FromRole="Soferi" ToRole="Masini" />
+  </EntityType>
+  <Association Name="FK__Soferi__ID_ANGAJ__49C3F6B7">
+    <End Role="Angajati" Type="Self.Angajati" Multiplicity="1" />
+    <End Role="Soferi" Type="Self.Soferi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Angajati">
+        <PropertyRef Name="ID_Angajat" />
+      </Principal>
+      <Dependent Role="Soferi">
+        <PropertyRef Name="ID_ANGAJAT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Persoane___ID_CL__31EC6D26">
+    <End Role="Clienti" Type="Self.Clienti" Multiplicity="1" />
+    <End Role="Persoane_Fizice" Type="Self.Persoane_Fizice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clienti">
+        <PropertyRef Name="ID_CLIENT" />
+      </Principal>
+      <Dependent Role="Persoane_Fizice">
+        <PropertyRef Name="ID_CLIENT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Persoane___ID_CL__32E0915F">
+    <End Role="Clienti" Type="Self.Clienti" Multiplicity="1" />
+    <End Role="Persoane_Juridice" Type="Self.Persoane_Juridice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clienti">
+        <PropertyRef Name="ID_CLIENT" />
+      </Principal>
+      <Dependent Role="Persoane_Juridice">
+        <PropertyRef Name="ID_CLIENT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Persoane___ID_LO__33D4B598">
+    <End Role="Locatii" Type="Self.Locatii" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Persoane_Fizice" Type="Self.Persoane_Fizice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locatii">
+        <PropertyRef Name="ID_LOCATIE" />
+      </Principal>
+      <Dependent Role="Persoane_Fizice">
+        <PropertyRef Name="ID_LOCATIE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Persoane___ID_LO__34C8D9D1">
+    <End Role="Locatii" Type="Self.Locatii" Multiplicity="1" />
+    <End Role="Persoane_Juridice" Type="Self.Persoane_Juridice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locatii">
+        <PropertyRef Name="ID_LOCATIE" />
+      </Principal>
+      <Dependent Role="Persoane_Juridice">
+        <PropertyRef Name="ID_LOCATIE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transport__ID_LO__3B75D760">
+    <End Role="Locatii" Type="Self.Locatii" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Transporturi" Type="Self.Transporturi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locatii">
+        <PropertyRef Name="ID_LOCATIE" />
+      </Principal>
+      <Dependent Role="Transporturi">
+        <PropertyRef Name="ID_LOCATIE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Masini__ID_TRANS__46E78A0C">
+    <End Role="Transporturi" Type="Self.Transporturi" Multiplicity="1" />
+    <End Role="Masini" Type="Self.Masini" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transporturi">
+        <PropertyRef Name="ID_TRANSPORT" />
+      </Principal>
+      <Dependent Role="Masini">
+        <PropertyRef Name="ID_TRANSPORT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Soferi__ID_SOFER__4AB81AF0">
+    <End Role="Masini" Type="Self.Masini" Multiplicity="1" />
+    <End Role="Soferi" Type="Self.Soferi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Masini">
+        <PropertyRef Name="ID_MASINA" />
+      </Principal>
+      <Dependent Role="Soferi">
+        <PropertyRef Name="ID_SOFER_MASINA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ZorTranSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Angajatis" EntityType="Self.Angajati" />
+    <EntitySet Name="Clientis" EntityType="Self.Clienti" />
+    <EntitySet Name="Locatiis" EntityType="Self.Locatii" />
+    <EntitySet Name="Masinis" EntityType="Self.Masini" />
+    <EntitySet Name="Transporturis" EntityType="Self.Transporturi" />
+    <EntitySet Name="Persoane_Fizice" EntityType="Self.Persoane_Fizice" />
+    <EntitySet Name="Persoane_Juridice" EntityType="Self.Persoane_Juridice" />
+    <EntitySet Name="Soferis" EntityType="Self.Soferi" />
+    <AssociationSet Name="FK__Soferi__ID_ANGAJ__49C3F6B7" Association="Self.FK__Soferi__ID_ANGAJ__49C3F6B7">
+      <End Role="Angajati" EntitySet="Angajatis" />
+      <End Role="Soferi" EntitySet="Soferis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Persoane___ID_CL__31EC6D26" Association="Self.FK__Persoane___ID_CL__31EC6D26">
+      <End Role="Clienti" EntitySet="Clientis" />
+      <End Role="Persoane_Fizice" EntitySet="Persoane_Fizice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Persoane___ID_CL__32E0915F" Association="Self.FK__Persoane___ID_CL__32E0915F">
+      <End Role="Clienti" EntitySet="Clientis" />
+      <End Role="Persoane_Juridice" EntitySet="Persoane_Juridice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Persoane___ID_LO__33D4B598" Association="Self.FK__Persoane___ID_LO__33D4B598">
+      <End Role="Locatii" EntitySet="Locatiis" />
+      <End Role="Persoane_Fizice" EntitySet="Persoane_Fizice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Persoane___ID_LO__34C8D9D1" Association="Self.FK__Persoane___ID_LO__34C8D9D1">
+      <End Role="Locatii" EntitySet="Locatiis" />
+      <End Role="Persoane_Juridice" EntitySet="Persoane_Juridice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transport__ID_LO__3B75D760" Association="Self.FK__Transport__ID_LO__3B75D760">
+      <End Role="Locatii" EntitySet="Locatiis" />
+      <End Role="Transporturi" EntitySet="Transporturis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Masini__ID_TRANS__46E78A0C" Association="Self.FK__Masini__ID_TRANS__46E78A0C">
+      <End Role="Transporturi" EntitySet="Transporturis" />
+      <End Role="Masini" EntitySet="Masinis" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Soferi__ID_SOFER__4AB81AF0" Association="Self.FK__Soferi__ID_SOFER__4AB81AF0">
+      <End Role="Masini" EntitySet="Masinis" />
+      <End Role="Soferi" EntitySet="Soferis" />
+    </AssociationSet>
+    <FunctionImport Name="AfisareTransporturi" ReturnType="Collection(ZorTranSModel.AfisareTransporturi_Result)" />
+    <FunctionImport Name="CautareFirma" ReturnType="Collection(String)">
+      <Parameter Name="oras" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CautareLocatieFirma" ReturnType="Collection(String)">
+      <Parameter Name="nume" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CautareSoferAuto" ReturnType="Collection(ZorTranSModel.CautareSoferAuto_Result)">
+      <Parameter Name="nume" Mode="In" Type="String" />
+      <Parameter Name="prenume" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ConsumTransport" ReturnType="Collection(Int32)">
+      <Parameter Name="consum" Mode="In" Type="Int32" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="EmailFirma" ReturnType="Collection(String)">
+      <Parameter Name="nume" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="InfoAngajati" ReturnType="Collection(ZorTranSModel.InfoAngajati_Result)" />
+    <FunctionImport Name="insert_masina">
+      <Parameter Name="parametru" Mode="In" Type="String" />
+      <Parameter Name="parametru1" Mode="In" Type="String" />
+      <Parameter Name="parametru2" Mode="In" Type="String" />
+      <Parameter Name="parametru4" Mode="In" Type="String" />
+      <Parameter Name="parametru5" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="NrMasini" ReturnType="Collection(ZorTranSModel.NrMasini_Result)" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ZorTranSModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ZorTranSModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="TelefonAngajat" ReturnType="Collection(String)">
+      <Parameter Name="nume" Mode="In" Type="String" />
+      <Parameter Name="prenume" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="TransportDupaData" ReturnType="Collection(ZorTranSModel.TransportDupaData_Result)">
+      <Parameter Name="data" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="VenitTotalFirma" ReturnType="Collection(Double)" />
+    <FunctionImport Name="insert_transport">
+      <Parameter Name="parametru1" Mode="In" Type="String" />
+      <Parameter Name="parametru2" Mode="In" Type="String" />
+      <Parameter Name="parametru3" Mode="In" Type="Int32" />
+      <Parameter Name="parametru4" Mode="In" Type="String" />
+      <Parameter Name="parametru5" Mode="In" Type="Double" />
+      <Parameter Name="parametru6" Mode="In" Type="Double" />
+      <Parameter Name="parametru7" Mode="In" Type="DateTime" />
+      <Parameter Name="parametru8" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="insert_angajat">
+      <Parameter Name="parametru1" Mode="In" Type="String" />
+      <Parameter Name="parametru2" Mode="In" Type="String" />
+      <Parameter Name="parametru3" Mode="In" Type="String" />
+      <Parameter Name="parametru4" Mode="In" Type="DateTime" />
+      <Parameter Name="parametru5" Mode="In" Type="String" />
+      <Parameter Name="parametru6" Mode="In" Type="String" />
+      <Parameter Name="parametru7" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="insert_sofer">
+      <Parameter Name="parametru" Mode="In" Type="String" />
+      <Parameter Name="parametru1" Mode="In" Type="Int32" />
+      <Parameter Name="parametru2" Mode="In" Type="Int32" />
+      <Parameter Name="parametru4" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="insert_client">
+      <Parameter Name="adresa" Mode="In" Type="String" />
+      <Parameter Name="telefon" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="insert_client_fizic">
+      <Parameter Name="num" Mode="In" Type="String" />
+      <Parameter Name="pre" Mode="In" Type="String" />
+      <Parameter Name="id_cl" Mode="In" Type="Int32" />
+      <Parameter Name="id_loc" Mode="In" Type="Int32" />
+      <Parameter Name="cnp" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="insert_client_juridic">
+      <Parameter Name="num" Mode="In" Type="String" />
+      <Parameter Name="cui" Mode="In" Type="String" />
+      <Parameter Name="nr_registru" Mode="In" Type="String" />
+      <Parameter Name="id_client" Mode="In" Type="Int32" />
+      <Parameter Name="id_locatie" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="AfisareTransporturi_Result">
+    <Property Type="Int32" Name="ID_TRANSPORT" Nullable="false" />
+    <Property Type="String" Name="Adresa_Plecare" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Adresa_Destinatie" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="Distanta_km_" Nullable="false" />
+    <Property Type="String" Name="Marfa" Nullable="false" MaxLength="10" />
+    <Property Type="Double" Name="Greutate_Marfa_t_" Nullable="false" />
+    <Property Type="Double" Name="Pret_km" Nullable="false" />
+    <Property Type="DateTime" Name="Data" Nullable="false" />
+    <Property Type="Int32" Name="ID_LOCATIE" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="CautareSoferAuto_Result">
+    <Property Type="String" Name="Nume" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Prenume" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Marca" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Model" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Numar_Inmatriculare" Nullable="true" MaxLength="10" />
+  </ComplexType>
+  <ComplexType Name="InfoAngajati_Result">
+    <Property Type="Int32" Name="ID_Angajat" Nullable="false" />
+    <Property Type="String" Name="Nume" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Prenume" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Adresa" Nullable="false" MaxLength="200" />
+    <Property Type="DateTime" Name="Data_Nastere" Nullable="false" />
+    <Property Type="String" Name="CNP" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Telefon" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Salariu" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="NrMasini_Result">
+    <Property Type="String" Name="Marca" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="NR_Masini" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="TransportDupaData_Result">
+    <Property Type="String" Name="Adresa_Plecare" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Marfa" Nullable="false" MaxLength="10" />
+    <Property Type="Double" Name="Greutate_Marfa_t_" Nullable="false" />
+    <Property Type="DateTime" Name="Data" Nullable="false" />
+    <Property Type="String" Name="Adresa_destinatie" Nullable="false" MaxLength="21" />
+  </ComplexType>
+</Schema>

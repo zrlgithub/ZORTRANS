@@ -1,0 +1,22 @@
+﻿<Application x:Class="ZORTRANS.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ZORTRANS"
+             StartupUri="MainWindow.xaml">
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <BitmapImage x:Key="MyImageA" UriSource="Images/car.png"></BitmapImage>
+            <BitmapImage x:Key="MyImageB" UriSource="Images/Trans.png"></BitmapImage>
+            <BitmapImage x:Key="MyImageC" UriSource="Images/handsh.png"></BitmapImage>
+            <BitmapImage x:Key="MyImageD" UriSource="Images/driver.png"></BitmapImage>
+            
+            <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="LoginBtnTheme.xaml"/>
+
+                <ResourceDictionary Source="ImgSelector.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

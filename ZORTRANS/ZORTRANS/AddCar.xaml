@@ -1,0 +1,62 @@
+﻿<Window x:Class="ZORTRANS.adaugamasina"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZORTRANS"
+        mc:Ignorable="d"
+        Title="adaugamasina" Height="450" Width="800"  Background="AntiqueWhite">
+    <Grid>
+        <Label Name="l_marca" Content="Marca:" Width="75" Height="30" FontSize="16" RenderTransformOrigin="-0.108,0.503" Margin="91,57,627.6,333"/>
+        <TextBox x:Name="marca" HorizontalAlignment="Left" Margin="166,72,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="15" Width="95"/>
+
+        <Label Name="l_model" Content="Model:" Width="75" Height="30" FontSize="16" RenderTransformOrigin="-0.108,0.503" Margin="86,95,632.6,295"/>
+        <TextBox x:Name="model" HorizontalAlignment="Left" Margin="166,110,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="15" Width="95"/>
+
+        <Label Name="l_nrinmatriculare" Content="Nr inmatriculare:" Height="30" FontSize="16" RenderTransformOrigin="-0.108,0.503" Margin="26,138,627.6,252"/>
+        <TextBox x:Name="nrinmatriculare" HorizontalAlignment="Left" Margin="166,153,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="15" Width="95"/>
+
+        <Label Name="l_tip" Content="Tip:" Width="75" FontSize="16" RenderTransformOrigin="-0.108,0.503" Margin="86,186,632.6,196"/>
+        <TextBox x:Name="tip" HorizontalAlignment="Left" Margin="166,201,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="15" Width="95"/>
+
+        <Label Name="l_id_transport" Content="ID Transport:" FontSize="16" RenderTransformOrigin="-0.108,0.503" Margin="31,229,627.6,145"/>
+        <TextBox x:Name="idtransport" HorizontalAlignment="Left" Height="15" Width="95" Margin="166,244,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
+
+        <Button x:Name="adauga" Content="Adauga masina" HorizontalAlignment="Left" Background="#FF8C2323" Margin="321,293,0,0" VerticalAlignment="Top" Width="95" Height="35" Click="Adauga_Click"/>
+
+        <StackPanel VerticalAlignment="Top">
+            <Image Style="{x:Null}" Source="Images/carsjpg.jpg" Width="180" Margin="40,80,-150,0"/>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Top" Margin="1,20" Grid.ColumnSpan="2">
+            <Border
+            x:Name="border"
+            Margin="08,02,0,0"
+            Padding="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            BorderThickness="0,.7,0,0">
+                <Border.BorderBrush>
+                    <SolidColorBrush Opacity="0.3" Color="Black" />
+                </Border.BorderBrush>
+                <Viewbox
+                Width="257"
+                MinHeight="20"
+                MaxHeight="30"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Stretch="Fill">
+                    <TextBlock
+                    x:Name="slognBlock"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontFamily="LucidaSans"
+                    Text="We deliver your cargo, whenever you need it and wherever you need it."
+                    TextAlignment="Center" FontSize="48" FontStyle="Italic" 
+                      />
+
+                </Viewbox>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>

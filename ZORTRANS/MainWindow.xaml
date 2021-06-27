@@ -1,0 +1,129 @@
+﻿<Window x:Class="ZORTRANS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ZORTRANS"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="450"
+        AllowsTransparency="True" Background="Transparent"
+        WindowStyle="None" ResizeMode="NoResize" MouseDown="Window_MouseDown"
+       >
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <Border CornerRadius="10" Grid.RowSpan="2">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#FF2723CD" Offset="0.0">
+                        </GradientStop>
+                        <GradientStop Color="#FF832E2E" Offset="1">
+                        </GradientStop>
+
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+
+            <StackPanel VerticalAlignment="Center">
+                <Image Style="{x:Null}" Source="Images/zts.png" Width="220"/>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Bottom" Margin="10,-80,0,-250" Grid.ColumnSpan="2">
+                <Border
+            x:Name="border"
+            Margin="08,02,0,0"
+            Padding="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            BorderThickness="0,.7,0,0">
+                    <Border.BorderBrush>
+                        <SolidColorBrush Opacity="0.3" Color="Black" />
+                    </Border.BorderBrush>
+                    <Viewbox
+                Width="257"
+                MinHeight="20"
+                MaxHeight="35"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Stretch="Fill">
+                        <TextBlock
+                    x:Name="slognBlock"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontFamily="LucidaSans"
+                    Text="We deliver your cargo, whenever you need it and wherever you need it."
+                    TextAlignment="Center" FontSize="48" FontStyle="Italic" 
+                      />
+
+                    </Viewbox>
+                </Border>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="1" >
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="userBox" FontFamily="Helvetica"
+                             FontWeight="Light"
+                             Text="username"
+                    FontSize="20"
+                             HorizontalAlignment="Center"
+                             Foreground="White"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Width="235"
+                             HorizontalContentAlignment="Left"
+                             Opacity="0.5"
+                             Height="25"
+                             Margin="100,0,0,0"/>
+                   
+                </StackPanel>
+                <Border Width="250"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5"/>
+
+
+
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                    <PasswordBox x:Name="userPassword" FontFamily="Helvetica"
+                             FontWeight="Light"
+                             Password="password"
+                             FontSize="20"
+                             HorizontalAlignment="Center"
+                             Foreground="White"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Width="235"
+                             HorizontalContentAlignment="Left"
+                             Opacity="0.5"
+                             Height="25"
+                             Margin="100,0,0,0"/>
+                   
+                </StackPanel>
+                <Border Width="250"
+                        Height="2"
+                        Background="White"
+                        Opacity="0.5"/>
+
+
+                <StackPanel Orientation="Horizontal" Margin="0,50,0,0">
+                    <Button x:Name="btn_login" Width="90" Height="35" Content="LOG IN" Margin="165,0,60,0" Click="Btn_login_Click"/>
+                    
+                </StackPanel>
+
+            </StackPanel>
+
+
+
+
+
+
+        </Grid>
+    </Grid>
+</Window>
